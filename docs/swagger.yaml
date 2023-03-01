@@ -1,0 +1,303 @@
+basePath: /api/v1
+definitions:
+  dto.AddressDTO:
+    properties:
+      address_line1:
+        type: string
+      address_line2:
+        type: string
+      city:
+        type: string
+      district:
+        type: string
+      postcode:
+        type: string
+      sub_district:
+        type: string
+    type: object
+  dto.LoginDTO:
+    properties:
+      password:
+        example: "12345"
+        type: string
+      username:
+        example: test1
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  dto.RegisterDTO:
+    properties:
+      address:
+        $ref: '#/definitions/dto.AddressDTO'
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      username:
+        type: string
+    required:
+    - username
+    type: object
+  response.Response:
+    properties:
+      data: {}
+      message:
+        type: string
+      result:
+        type: boolean
+      status:
+        type: integer
+    type: object
+host: localhost:4000
+info:
+  contact: {}
+  title: Tag Service API
+  version: "1.0"
+paths:
+  /auth/login:
+    post:
+      description: login
+      parameters:
+      - description: User
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginDTO'
+      responses: {}
+      tags:
+      - User
+  /auth/signup:
+    post:
+      description: create user
+      parameters:
+      - description: User
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterDTO'
+      responses: {}
+      tags:
+      - User
+  /product:
+    get:
+      description: Get data all from table product
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: get products
+      tags:
+      - product
+  /product-category:
+    get:
+      description: Get data all from table product Category
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: get products Category
+      tags:
+      - product-Category
+  /product-category/create:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new product Category.
+      parameters:
+      - in: formData
+        name: description
+        required: true
+        type: string
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - description: Product Category images
+        in: formData
+        name: images
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - Bearer: []
+      summary: Create a new product Category.
+      tags:
+      - product-Category
+  /product-type:
+    get:
+      description: Get data all from table product
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: get products
+      tags:
+      - product-type
+  /product-type/create:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new product.
+      parameters:
+      - in: formData
+        name: description
+        required: true
+        type: string
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - in: formData
+        name: product_category_id
+        required: true
+        type: integer
+      - description: Product Type images
+        in: formData
+        name: images
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - Bearer: []
+      summary: Create a new product.
+      tags:
+      - product-type
+  /product/:id:
+    get:
+      description: Get data by id from table product
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: get product by id
+      tags:
+      - product
+  /product/create:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new product.
+      parameters:
+      - in: formData
+        name: description
+        required: true
+        type: string
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - in: formData
+        name: price
+        type: string
+      - in: formData
+        name: product_type_id
+        required: true
+        type: integer
+      - description: Product images
+        in: formData
+        items:
+          type: file
+        name: images
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - Bearer: []
+      summary: Create a new product.
+      tags:
+      - product
+  /product/update/:id:
+    patch:
+      consumes:
+      - multipart/form-data
+      description: update peoduct
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - in: formData
+        name: description
+        required: true
+        type: string
+      - in: formData
+        name: name
+        required: true
+        type: string
+      - in: formData
+        name: price
+        type: string
+      - in: formData
+        name: product_type_id
+        required: true
+        type: integer
+      - description: Product images
+        in: formData
+        items:
+          type: file
+        name: images
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: update product
+      tags:
+      - product
+schemes:
+- http
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
