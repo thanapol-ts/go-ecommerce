@@ -7,7 +7,6 @@ import (
 	"github/go_ecommerce/logs"
 	"github/go_ecommerce/models"
 	"github/go_ecommerce/repositories"
-	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt"
@@ -85,7 +84,7 @@ func (s authenService) Login(loginDTO *dto.LoginDTO) (*LoginModel, error) {
 		"exp":  time.Now().Add(time.Hour * 24 * 30).Unix(),
 		"user": user.Username,
 	})
-	tokenString, errToken := token.SignedString([]byte(os.Getenv("SECERT")))
+	tokenString, errToken := token.SignedString([]byte("seceret"))
 	logs.Info(tokenString)
 
 	if errToken != nil {
