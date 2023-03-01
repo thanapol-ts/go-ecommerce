@@ -21,7 +21,7 @@ func init() {
 //	@title		Tag Service API
 //	@version	1.0
 
-//	@host		localhost:4000
+//	@host		159.65.15.133:4000
 //	@BasePath	/api/v1
 //
 //	@schemes	http
