@@ -13,7 +13,7 @@ import (
 )
 
 func init() {
-	// intializer.LoadEnv()
+	intializer.LoadEnv()
 	intializer.ConnectionDB()
 	intializer.DB.AutoMigrate(&models.Product{}, &models.ProductImage{}, &models.ProductType{}, &models.User{}, &models.Address{}, &models.ProductCategory{})
 }
@@ -21,15 +21,15 @@ func init() {
 //	@title		Tag Service API
 //	@version	1.0
 
-//	@host		159.65.15.133:4000
+//	@host		localhost:4000
 //	@BasePath	/api/v1
 //
 //	@schemes	http
 
-// @securityDefinitions.apikey	Bearer
-// @in							header
-// @name						Authorization
-// @description				Type "Bearer" followed by a space and JWT token.
+//	@securityDefinitions.apikey	Bearer
+//	@in							header
+//	@name						Authorization
+//	@description				Type "Bearer" followed by a space and JWT token.
 func main() {
 	r := gin.Default()
 	r.Static("/assets", "../assets")

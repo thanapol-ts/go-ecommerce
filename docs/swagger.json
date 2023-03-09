@@ -8,7 +8,7 @@
         "contact": {},
         "version": "1.0"
     },
-    "host": "159.65.15.133:4000",
+    "host": "localhost:4000",
     "basePath": "/api/v1",
     "paths": {
         "/auth/login": {

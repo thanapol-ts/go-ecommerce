@@ -56,7 +56,7 @@ definitions:
       status:
         type: integer
     type: object
-host: 159.65.15.133:4000
+host: localhost:4000
 info:
   contact: {}
   title: Tag Service API
