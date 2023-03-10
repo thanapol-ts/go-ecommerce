@@ -8,3 +8,5 @@ ENV= "dev"
 docker build -t $IMAGE_NAME .
 
 docker run -e ENV=$ENV -d -p $PORT_NUMBER:$PORT_NUMBER -it $IMAGE_NAME
+
+exit
