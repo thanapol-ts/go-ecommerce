@@ -1,4 +1,3 @@
-basePath: /api/v1
 definitions:
   dto.AddressDTO:
     properties:
@@ -56,7 +55,6 @@ definitions:
       status:
         type: integer
     type: object
-host: localhost:4000
 info:
   contact: {}
   title: Tag Service API
@@ -293,7 +291,7 @@ paths:
       tags:
       - product
 schemes:
-- http
+- https
 securityDefinitions:
   Bearer:
     description: Type "Bearer" followed by a space and JWT token.

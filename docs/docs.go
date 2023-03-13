@@ -479,9 +479,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:4000",
-	BasePath:         "/api/v1",
-	Schemes:          []string{"http"},
+	Host:             "",
+	BasePath:         "",
+	Schemes:          []string{"https"},
 	Title:            "Tag Service API",
 	Description:      "",
 	InfoInstanceName: "swagger",

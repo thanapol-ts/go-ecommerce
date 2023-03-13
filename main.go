@@ -5,6 +5,7 @@ import (
 	intializer "github/go_ecommerce/intializers"
 	"github/go_ecommerce/models"
 	"github/go_ecommerce/routes"
+	"os"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -21,10 +22,7 @@ func init() {
 //	@title		Tag Service API
 //	@version	1.0
 
-//	@host		localhost:4000
-//	@BasePath	/api/v1
-//
-//	@schemes	http
+//	@schemes	https
 
 //	@securityDefinitions.apikey	Bearer
 //	@in							header
@@ -34,6 +32,7 @@ func main() {
 	r := gin.Default()
 	r.Static("/assets", "../assets")
 	docs.SwaggerInfo.BasePath = "/api/v1"
+	docs.SwaggerInfo.Host = os.Getenv("IP_ADDRESS")
 	config := cors.DefaultConfig()
 	config.AllowAllOrigins = true
 	config.AllowHeaders = []string{"Origin", "Authorization"}
