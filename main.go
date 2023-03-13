@@ -22,8 +22,6 @@ func init() {
 //	@title		Tag Service API
 //	@version	1.0
 
-//	@schemes	https
-
 //	@securityDefinitions.apikey	Bearer
 //	@in							header
 //	@name						Authorization
