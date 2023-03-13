@@ -481,7 +481,7 @@ var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "",
 	BasePath:         "",
-	Schemes:          []string{"https"},
+	Schemes:          []string{},
 	Title:            "Tag Service API",
 	Description:      "",
 	InfoInstanceName: "swagger",

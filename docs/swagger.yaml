@@ -290,8 +290,6 @@ paths:
       summary: update product
       tags:
       - product
-schemes:
-- https
 securityDefinitions:
   Bearer:
     description: Type "Bearer" followed by a space and JWT token.
